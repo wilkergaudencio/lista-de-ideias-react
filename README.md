@@ -1,4 +1,4 @@
-# 🏆 App Lista de tarefas
+# 🏆 App Lista de idéias
 ![GitHub repo size](https://img.shields.io/github/repo-size/BrunoOliveira16/lista-de-tarefas-react?style=for-the-badge)
 ![Languages](https://img.shields.io/github/languages/count/BrunoOliveira16/lista-de-tarefas-react?style=for-the-badge)
 ![Status projeto](https://img.shields.io/badge/STATUS-CONCLUIDO-GREEN?style=for-the-badge)
@@ -24,7 +24,7 @@
 <br>
 
 ## 📌 Resumo do Projeto
-Este projeto foi desenvolvido no curso engenheiro front-end da EBAC, e trata-se de uma aplicação de lista de tarefas, onde o usuário pode criar, editar e remover a tarefa. Além de efetuar buscas personalizadas pela prioridade, status ou mesmo nome da tarefa, foi utilizado React + TypeScript + redux + Styled-components no desenvolvimento do projeto.
+Este projeto foi desenvolvido no curso engenheiro front-end da EBAC, e trata-se de uma aplicação de lista de idéias, onde o usuário pode criar, editar e remover a tarefa. Além de efetuar buscas personalizadas pela prioridade, status ou mesmo nome da tarefa, foi utilizado React + TypeScript + redux + Styled-components no desenvolvimento do projeto.
 
 <br>
 
