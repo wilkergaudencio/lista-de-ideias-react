@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
+import { LoginContainer, Form, Input, Button, AltLogin, Logo } from './styles'
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('')
@@ -22,25 +23,38 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <input
+    <LoginContainer>
+      <Logo />
+      <Form onSubmit={handleLogin}>
+        <h2>Log in</h2>
+        <Input
           type="text"
-          placeholder="Username"
+          placeholder="Email"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input
+        <Input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
-      </form>
-      <Link to="/register">Registrar</Link>
-    </div>
+        <div>
+          <input type="checkbox" id="rememberMe" />
+          <label htmlFor="rememberMe">Remember me</label>
+          <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+        <Button type="submit">Log in</Button>
+        <p>
+          Não tem uma conta?  <Link to="/register">Registre-se</Link>
+        </p>
+        <AltLogin>
+          <div>
+            <Button>SSO</Button>
+          </div>
+        </AltLogin>
+      </Form>
+    </LoginContainer>
   )
 }
 

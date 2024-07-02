@@ -52,7 +52,8 @@ const TasksList = () => {
 
   const showFilteredResult = (amount: number) => {
     let message = ''
-    const complement = term !== undefined && term.length > 0 ? `e "${term}"` : ''
+    const complement =
+    term !== undefined && term.length > 0 ? `e "${term}"` : ''
 
     if (criterion === 'todos') {
       message = `${amount} ideia(s) encontrada(s) como: todas ${complement}`
