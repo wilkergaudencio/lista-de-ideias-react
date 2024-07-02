@@ -29,12 +29,18 @@ const Form = () => {
       classification,
       status: 'Aguardando avaliação',
       evaluationNote: 'Aguardando avaliação',
-      priority, // Add the priority field
-      stats: enums.Stats.PENDENTE // Add the stats field
+      priority,
+      stats: enums.Stats.PENDENTE
     }
 
+    const token = localStorage.getItem('token')
+
     try {
-      await axios.post('http://localhost:5001/ideas', newIdea)
+      await axios.post('http://localhost:5001/ideas', newIdea, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       dispatch(register(newIdea))
       navigate('/')
     } catch (err) {

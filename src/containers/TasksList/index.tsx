@@ -14,8 +14,14 @@ const TasksList = () => {
 
   useEffect(() => {
     const fetchIdeas = async () => {
+      const token = localStorage.getItem('token')
+
       try {
-        const response = await axios.get('http://localhost:5001/ideas')
+        const response = await axios.get('http://localhost:5001/ideas', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         setIdeas(response.data)
       } catch (err) {
         console.error(err)
