@@ -4,6 +4,8 @@ import store from './store'
 import GlobalStyle, { Container } from './styles'
 import Home from './pages/Home'
 import Register from './pages/Register'
+import Login from './pages/Login'
+import RegisterUser from './pages/RegisterUser'
 
 const routes = createBrowserRouter([
   {
@@ -13,6 +15,14 @@ const routes = createBrowserRouter([
   {
     path: '/cadastro',
     element: <Register />
+  },
+  {
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: '/register',
+    element: <RegisterUser />
   }
 ])
 

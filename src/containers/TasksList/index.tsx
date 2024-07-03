@@ -14,8 +14,14 @@ const TasksList = () => {
 
   useEffect(() => {
     const fetchIdeas = async () => {
+      const token = localStorage.getItem('token')
+
       try {
-        const response = await axios.get('http://localhost:5001/ideas')
+        const response = await axios.get('http://localhost:5001/ideas', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         setIdeas(response.data)
       } catch (err) {
         console.error(err)
@@ -46,7 +52,8 @@ const TasksList = () => {
 
   const showFilteredResult = (amount: number) => {
     let message = ''
-    const complement = term !== undefined && term.length > 0 ? `e "${term}"` : ''
+    const complement =
+    term !== undefined && term.length > 0 ? `e "${term}"` : ''
 
     if (criterion === 'todos') {
       message = `${amount} ideia(s) encontrada(s) como: todas ${complement}`
