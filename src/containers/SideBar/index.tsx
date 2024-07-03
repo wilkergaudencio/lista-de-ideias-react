@@ -31,26 +31,26 @@ const SideBar = ({ showFilters }: Props) => {
               <FilterCard
                 value={enums.Stats.PENDENTE}
                 criterion="status"
-                label="Pendentes"
+                label="Em análise"
               />
               <FilterCard
                 value={enums.Stats.CONCLUIDA}
                 criterion="status"
-                label="Concluidas"
+                label="Aprovado para MVP"
               />
               <FilterCard
                 value={enums.Priority.URGENTE}
-                criterion="prioridade"
-                label="Urgentes"
+                criterion="status"
+                label="Aguardando Avaliação"
               />
               <FilterCard
                 value={enums.Priority.IMPORTANTE}
-                criterion="prioridade"
-                label="Importantes"
+                criterion="status"
+                label="Reprovado"
               />
               <FilterCard
                 value={enums.Priority.NORMAL}
-                criterion="prioridade"
+                criterion="status"
                 label="Normal"
               />
               <FilterCard criterion="todos" label="Todas" />

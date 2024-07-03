@@ -3,7 +3,7 @@ import * as enums from '../../utils/enums/Task'
 
 type FilterState = {
   term?: string
-  criterion: 'prioridade' | 'status' | 'todos'
+  criterion: 'Aguardando Avaliação' | 'status' | 'todos'
   value?: enums.Priority | enums.Stats
 }
 

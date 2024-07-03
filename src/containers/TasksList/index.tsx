@@ -38,7 +38,7 @@ const TasksList = () => {
         (item) => item.title.toLowerCase().search(term.toLowerCase()) >= 0
       )
 
-      if (criterion === 'prioridade') {
+      if (criterion === 'Aguardando Avaliação') {
         tasksFilter = tasksFilter.filter((item) => item.priority === value)
       } else if (criterion === 'status') {
         tasksFilter = tasksFilter.filter((item) => item.status === value)
@@ -53,7 +53,8 @@ const TasksList = () => {
   const showFilteredResult = (amount: number) => {
     let message = ''
     const complement =
-    term !== undefined && term.length > 0 ? `e "${term}"` : ''
+    term !==
+    undefined && term.length > 0 ? `e "${term}"` : ''
 
     if (criterion === 'todos') {
       message = `${amount} ideia(s) encontrada(s) como: todas ${complement}`
