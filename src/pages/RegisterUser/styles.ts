@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 
-export const LoginContainer = styled.div`
+export const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  grid-column: 1 / -1; /* Faz o contêiner ocupar toda a largura da grade */
+  grid-column: 1 / -1;
   background-color: #0a2f2a;
 `
 
-export const Form = styled.form`
+export const DivForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,34 +29,13 @@ export const Form = styled.form`
 
   div {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     align-items: center;
     margin-bottom: 1rem;
 
     label {
       margin-left: 0.5rem;
-      margin-right: 0px;
-      color: #eee;
-    }
-
-    a {
-      color: #0073e6;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  p {
-    margin-top: 1rem;
-    color: #eee;
-    a {
-      color: #0073e6;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
 `
@@ -73,9 +52,8 @@ export const Input = styled.input`
 export const Button = styled.button`
   width: 100%;
   padding: 0.75rem;
-  margin-top: 1rem;
   background-color: #0073e6;
-  color: #eee;
+  color: #fff;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
@@ -83,31 +61,26 @@ export const Button = styled.button`
   &:hover {
     background-color: #005bb5;
   }
-`
-
-export const Logo = styled.img`
-  width: 150px;
-  margin-bottom: 1rem;
-`
-
-export const AltLogin = styled.div`
-  text-align: center;
-  margin-top: 1rem;
-  width: 100%;
-
-  p {
-    margin-bottom: 0.5rem;
+  &:disabled {
+    background-color: #ccc;
     color: #eee;
+    cursor: not-allowed;
   }
+`
 
-  div {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+export const Select = styled.select`
+  position: relative;
+  width: 200px;
+  margin-bottom: 20px;
+`
 
-    button {
-      width: 23%;
-      margin: 0 0.5%;
-    }
+export const Option = styled.option`
+  padding: 5px;
+  background-color: #fff;
+  color: #eee;
+
+  &:checked {
+    background-color: #007bff; /* Cor da opção selecionada */
+    color: #eee;
   }
 `

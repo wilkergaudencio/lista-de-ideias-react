@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 
-export const LoginContainer = styled.div`
+export const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  grid-column: 1 / -1; /* Faz o contêiner ocupar toda a largura da grade */
+  grid-column: 1 / -1;
   background-color: #0a2f2a;
 `
 
-export const Form = styled.form`
+export const DivForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,14 +29,13 @@ export const Form = styled.form`
 
   div {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     align-items: center;
     margin-bottom: 1rem;
 
     label {
       margin-left: 0.5rem;
-      margin-right: 0px;
-      color: #eee;
     }
 
     a {
@@ -50,7 +49,6 @@ export const Form = styled.form`
 
   p {
     margin-top: 1rem;
-    color: #eee;
     a {
       color: #0073e6;
       text-decoration: none;
@@ -75,7 +73,7 @@ export const Button = styled.button`
   padding: 0.75rem;
   margin-top: 1rem;
   background-color: #0073e6;
-  color: #eee;
+  color: #fff;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
@@ -97,7 +95,6 @@ export const AltLogin = styled.div`
 
   p {
     margin-bottom: 0.5rem;
-    color: #eee;
   }
 
   div {

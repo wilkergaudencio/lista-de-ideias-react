@@ -1,11 +1,10 @@
 import Form from '../../containers/Form'
-import SideBar from '../../containers/SideBar'
+import { RegisterContainer } from './styles'
 
 const Register = () => (
-  <>
-    <SideBar showFilters={false} />
+  <RegisterContainer>
     <Form />
-  </>
+  </RegisterContainer>
 )
 
 export default Register

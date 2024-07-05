@@ -29,7 +29,7 @@ const Login: React.FC = () => {
         <h2>Log in</h2>
         <Input
           type="text"
-          placeholder="Email"
+          placeholder="User"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -40,13 +40,15 @@ const Login: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div>
-          <input type="checkbox" id="rememberMe" />
-          <label htmlFor="rememberMe">Remember me</label>
+          <div>
+            <input type="checkbox" id="rememberMe" />
+            <label htmlFor="rememberMe">Remember me</label>
+          </div>
           <Link to="/forgot-password">Forgot Password?</Link>
         </div>
         <Button type="submit">Log in</Button>
         <p>
-          Não tem uma conta?  <Link to="/register">Registre-se</Link>
+          Não tem uma conta? <Link to="/register">Registre-se</Link>
         </p>
         <AltLogin>
           <div>

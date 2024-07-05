@@ -39,6 +39,23 @@ export const Title = styled.h2`
   font-weight: bold;
 `
 
+export const SearchBar = styled.input`
+  display: flex;
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+`
+
+export const SearchButton = styled.button`
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  color: #aaa;
+  margin-left: 10px;
+  cursor: pointer;
+`
+
 export const Field = styled.input`
   width: 100%;
   padding: 8px;

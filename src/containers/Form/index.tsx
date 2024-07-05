@@ -16,7 +16,7 @@ const Form = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [classification, setClassification] = useState<string[]>([])
-  const [priority, setPriority] = useState(enums.Priority.NORMAL)
+  const [priority, setPriority] = useState(enums.Priority.APROVADO)
 
   const registerIdea = async (e: FormEvent) => {
     e.preventDefault()

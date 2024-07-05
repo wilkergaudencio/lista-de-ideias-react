@@ -15,6 +15,7 @@ export const S = {
     color: ${(props) =>
       props.active ? `${variables.blue}` : `${variables.gray5}`};
     border-radius: 8px;
+    margin: 5px;
     cursor: pointer;
   `,
   Counter: styled.span`

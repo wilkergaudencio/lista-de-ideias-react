@@ -11,8 +11,8 @@ type TagProps = {
 
 function returnBackgroundColor(props: TagProps): string {
   if (props.parameter === 'priority') {
-    if (props.priority === enums.Priority.URGENTE) return variables.red
-    if (props.priority === enums.Priority.IMPORTANTE) return variables.yellow2
+    if (props.priority === enums.Priority.REPROVADO) return variables.red
+    if (props.priority === enums.Priority.APROVADO) return variables.yellow2
   } else {
     if (props.stats === enums.Stats.PENDENTE) return variables.yellow
     if (props.stats === enums.Stats.CONCLUIDA) return variables.green

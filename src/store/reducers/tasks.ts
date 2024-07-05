@@ -12,21 +12,21 @@ const initialState: TasksState = {
       id: 1,
       title: 'Estudar React',
       description: 'concluir curso engenheiro front-end da EBAC',
-      priority: enums.Priority.IMPORTANTE,
+      priority: enums.Priority.EM_ANALISE,
       stats: enums.Stats.PENDENTE
     },
     {
       id: 2,
       title: 'Estudar Typescript',
       description: 'concluir curso engenheiro front-end da EBAC',
-      priority: enums.Priority.URGENTE,
+      priority: enums.Priority.REPROVADO,
       stats: enums.Stats.CONCLUIDA
     },
     {
       id: 3,
       title: 'Estudar JavaScript',
       description: 'concluir curso JS da Udemy',
-      priority: enums.Priority.NORMAL,
+      priority: enums.Priority.APROVADO,
       stats: enums.Stats.PENDENTE
     }
   ]

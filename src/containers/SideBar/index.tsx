@@ -5,7 +5,7 @@ import { changeTerm } from '../../store/reducers/filter'
 import FilterCard from '../../components/FilterCard'
 import * as enums from '../../utils/enums/Task'
 import { S } from './styles'
-import { Button, Field } from '../../styles'
+import { Button, Field, SearchBar, SearchButton } from '../../styles'
 
 type Props = {
   showFilters: boolean
@@ -21,37 +21,36 @@ const SideBar = ({ showFilters }: Props) => {
       <div>
         {showFilters ? (
           <>
+            {/* <S.SearchBar> */}
             <Field
               type="text"
               placeholder="Buscar"
               value={term}
               onChange={(e) => dispatch(changeTerm(e.target.value))}
             />
+            {/* <SearchButton className="filter-button"></SearchButton> */}
+            {/* </S.SearchBar> */}
+
             <S.Filters>
               <FilterCard
-                value={enums.Stats.PENDENTE}
+                value={enums.Priority.APROVADO}
                 criterion="status"
-                label="Pendentes"
+                label="Aprovado para MVP"
               />
               <FilterCard
-                value={enums.Stats.CONCLUIDA}
-                criterion="status"
-                label="Concluidas"
-              />
-              <FilterCard
-                value={enums.Priority.URGENTE}
+                value={enums.Priority.AGUARDANDO_AVALIACAO}
                 criterion="prioridade"
-                label="Urgentes"
+                label="Aguardando Avaliação"
               />
               <FilterCard
-                value={enums.Priority.IMPORTANTE}
+                value={enums.Priority.EM_ANALISE}
                 criterion="prioridade"
-                label="Importantes"
+                label="Em análise"
               />
               <FilterCard
-                value={enums.Priority.NORMAL}
+                value={enums.Priority.REPROVADO}
                 criterion="prioridade"
-                label="Normal"
+                label="Reprovado"
               />
               <FilterCard criterion="todos" label="Todas" />
             </S.Filters>
