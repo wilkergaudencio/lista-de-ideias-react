@@ -12,7 +12,7 @@ export const S = {
       height: auto;
     }
   `,
-  Filters: styled.div`
+  Filters: styled.select`
     display: flex;
     flex-direction: column;
     padding: 5px;

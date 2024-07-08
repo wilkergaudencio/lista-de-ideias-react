@@ -4,6 +4,7 @@ import * as enums from '../../utils/enums/Task'
 
 type TasksState = {
   items: Task[]
+  filteredItems: Task[]
 }
 
 const initialState: TasksState = {
@@ -29,7 +30,8 @@ const initialState: TasksState = {
       priority: enums.Priority.APROVADO,
       stats: enums.Stats.PENDENTE
     }
-  ]
+  ],
+  filteredItems: []
 }
 
 const taskSlice = createSlice({
@@ -80,10 +82,14 @@ const taskSlice = createSlice({
           ? enums.Stats.CONCLUIDA
           : enums.Stats.PENDENTE
       }
+    },
+    setFilteredItems: (state, action: PayloadAction<Task[]>) => {
+      state.filteredItems = action.payload
     }
   }
 })
 
-export const { remove, edit, register, changeStats } = taskSlice.actions
+export const { remove, edit, register, changeStats, setFilteredItems } =
+  taskSlice.actions
 
 export default taskSlice.reducer

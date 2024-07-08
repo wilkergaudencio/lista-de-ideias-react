@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const S = {
-  Card: styled.div<Props>`
+  Card: styled.option<Props>`
     padding: 8px;
     border: 1px solid
       ${(props) => (props.active ? `${variables.blue}` : `${variables.gray6}`)};

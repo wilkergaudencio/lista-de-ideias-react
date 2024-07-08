@@ -9,6 +9,7 @@ const TasksList = () => {
   const { term, criterion, value } = useSelector(
     (state: RootReducer) => state.filter
   )
+  // const filteredList = useSelector((state: any) => state.task.filteredItems)
 
   const [ideas, setIdeas] = useState<any[]>([])
 
@@ -53,7 +54,7 @@ const TasksList = () => {
   const showFilteredResult = (amount: number) => {
     let message = ''
     const complement =
-    term !== undefined && term.length > 0 ? `e "${term}"` : ''
+      term !== undefined && term.length > 0 ? `e "${term}"` : ''
 
     if (criterion === 'todos') {
       message = `${amount} ideia(s) encontrada(s) como: todas ${complement}`
