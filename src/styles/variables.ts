@@ -12,5 +12,6 @@ export default {
   gray6: '#A1A1A1',
   white: '#FFFFFF',
   white2: '#FCFCFC',
-  white3: '#EEEEEE'
+  white3: '#EEEEEE',
+  rdbggreen: 'rgb(4, 26, 23)'
 }

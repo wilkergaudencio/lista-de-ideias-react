@@ -4,7 +4,7 @@ import variables from '../../styles/variables'
 export const S = {
   Aside: styled.aside`
     padding: 16px;
-    background-color: ${variables.white3};
+    background-color: ${variables.rdbggreen};
     height: 100vh;
 
     @media screen and (max-width: 765px) {
