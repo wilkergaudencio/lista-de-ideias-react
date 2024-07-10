@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const S = {
-  Card: styled.div<Props>`
+  Card: styled.option<Props>`
     padding: 8px;
     border: 1px solid
       ${(props) => (props.active ? `${variables.blue}` : `${variables.gray6}`)};
@@ -15,6 +15,7 @@ export const S = {
     color: ${(props) =>
       props.active ? `${variables.blue}` : `${variables.gray5}`};
     border-radius: 8px;
+    margin: 5px;
     cursor: pointer;
   `,
   Counter: styled.span`

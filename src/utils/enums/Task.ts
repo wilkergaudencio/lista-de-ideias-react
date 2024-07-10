@@ -1,7 +1,8 @@
 export enum Priority {
-  URGENTE = 'urgente',
-  IMPORTANTE = 'importante',
-  NORMAL = 'normal'
+  AGUARDANDO_AVALIACAO = 'Aguardando Avaliação',
+  EM_ANALISE = 'Em análise',
+  REPROVADO = 'Reprovado',
+  APROVADO = 'Aprovado para MVP'
 }
 
 export enum Stats {

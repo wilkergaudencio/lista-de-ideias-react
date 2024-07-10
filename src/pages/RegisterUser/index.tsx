@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import {
+  Button,
+  DivForm,
+  Input,
+  RegisterContainer,
+  Select,
+  Option
+} from './styles'
 
 const RegisterUser: React.FC = () => {
   const [username, setUsername] = useState('')
@@ -23,28 +31,30 @@ const RegisterUser: React.FC = () => {
   }
 
   return (
-    <div>
-      <h1>Registrar Usuário</h1>
-      <form onSubmit={handleRegister}>
-        <input
+    <RegisterContainer>
+      <DivForm onSubmit={handleRegister}>
+        <h2>Registrar Usuário</h2>
+        <Input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input
+        <Input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <select value={role} onChange={(e) => setRole(e.target.value)}>
-          <option value="entrepreneur">Empreendedor</option>
-          <option value="admin">Administrador</option>
-        </select>
-        <button type="submit">Registrar</button>
-      </form>
-    </div>
+        <Select value={role} onChange={(e) => setRole(e.target.value)}>
+          <Option value="entrepreneur">Empreendedor</Option>
+          <Option value="admin">Administrador</Option>
+        </Select>
+        <Button type="submit" disabled={username === '' || password === ''}>
+          Registrar
+        </Button>
+      </DivForm>
+    </RegisterContainer>
   )
 }
 
