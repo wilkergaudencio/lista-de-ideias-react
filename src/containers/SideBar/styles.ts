@@ -17,6 +17,7 @@ export const S = {
     flex-direction: column;
     padding: 5px;
     margin-top: 16px;
+    width: 100%;
   `,
   SearchBar: styled.input`
     display: flex;

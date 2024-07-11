@@ -89,10 +89,27 @@ const Form = () => {
         <S.Options>
           <label>Classificação da Ideia</label>
           <select multiple onChange={handleClassificationChange}>
-            <option value="Classificação 1">Classificação 1</option>
-            <option value="Classificação 2">Classificação 2</option>
-            <option value="Classificação 3">Classificação 3</option>
-            <option value="Classificação 4">Classificação 4</option>
+            <option value={enums.Category.AUMENTO} label="Aumento de Vendas" />
+            <option
+              value={enums.Category.REDUCAO}
+              label="Redução de Custos ou Aumento de Produtividade"
+            />
+            <option
+              value={enums.Category.SUSTENTABILIDADE}
+              label="Sustentabilidade, Diversidade e Inclusão"
+            />
+            <option
+              value={enums.Category.EXPERIENCIA}
+              label="Experiência do Funcionário e Marca Empregador"
+            />
+            <option
+              value={enums.Category.CLIENTE}
+              label="Experiência do Cliente (Digital ou Farmácia)"
+            />
+            <option
+              value={enums.Category.VISIBILIDADE}
+              label="Visibilidade da Marca RD Saúde"
+            />
           </select>
         </S.Options>
         <SaveButton type="submit">Cadastrar</SaveButton>

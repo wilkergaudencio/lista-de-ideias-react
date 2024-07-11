@@ -9,3 +9,12 @@ export enum Stats {
   PENDENTE = 'pendente',
   CONCLUIDA = 'concluida'
 }
+
+export enum Category {
+  AUMENTO = 'Aumento de Vendas',
+  REDUCAO = 'Redução de Custos ou Aumento de Produtividade',
+  SUSTENTABILIDADE = 'Sustentabilidade, Diversidade e Inclusão',
+  EXPERIENCIA = 'Experiência do Funcionário e Marca Empregador',
+  CLIENTE = 'Experiência do Cliente (Digital ou Farmácia)',
+  VISIBILIDADE = 'Visibilidade da Marca RD Saúde'
+}

@@ -1,56 +1,41 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { RootReducer } from '../../store'
-import { changeTerm } from '../../store/reducers/filter'
+import { changeTerm, changeFilter } from '../../store/reducers/filter'
+import { changeFilterCategory } from '../../store/reducers/filterCategory'
 import FilterCard from '../../components/FilterCard'
 import * as enums from '../../utils/enums/Task'
 import { S } from './styles'
 import { Button, Field, SearchBar, SearchButton } from '../../styles'
-import { SetStateAction, useState } from 'react'
-import { setFilteredItems } from '../../store/reducers/tasks'
 
 type Props = {
   showFilters: boolean
 }
 
 const SideBar = ({ showFilters }: Props) => {
-  const list = useSelector((state: any) => state.tasks.items)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { term } = useSelector((state: RootReducer) => state.filter)
+  const { term, criterion, value } = useSelector(
+    (state: RootReducer) => state.filter
+  )
 
-  const [selectedEnum, setSelectedEnum] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
+  // Remova os `useState`
+  // const [selectedPriority, setSelectedPriority] = useState('');
+  // const [selectedCategory, setSelectedCategory] = useState('');
 
-  const handleEnumChange = (event: {
-    target: { value: SetStateAction<string> }
-  }) => {
-    setSelectedEnum(event.target.value)
-    applyFilter()
-  }
-
-  const handleCategoryChange = (event: {
-    target: { value: SetStateAction<string> }
-  }) => {
-    setSelectedCategory(event.target.value)
-    applyFilter()
-  }
-
-  const applyFilter = () => {
-    const filteredList = list.filter(
-      (activity: { enum: string; category: string }) => {
-        // Filtra por Enum
-        if (selectedEnum && activity.enum !== selectedEnum) {
-          return false
-        }
-        // Filtra por categoria
-        if (selectedCategory && activity.category !== selectedCategory) {
-          return false
-        }
-        return true
-      }
+  const handlePriorityChange = (event: { target: { value: any } }) => {
+    dispatch(
+      changeFilter({ criterion: 'prioridade', value: event.target.value })
     )
-    dispatch(setFilteredItems(filteredList))
+  }
+
+  const handleCategoryChange = (event: { target: { value: any } }) => {
+    dispatch(
+      changeFilterCategory({
+        criterionCategory: 'categoria',
+        valueCategory: event.target.value
+      })
+    )
   }
 
   return (
@@ -68,7 +53,7 @@ const SideBar = ({ showFilters }: Props) => {
             {/* <SearchButton className="filter-button"></SearchButton> */}
             {/* </S.SearchBar> */}
 
-            <S.Filters value={selectedEnum} onChange={handleEnumChange}>
+            <S.Filters onChange={handlePriorityChange}>
               <FilterCard
                 value={enums.Priority.APROVADO}
                 criterion="prioridade"
@@ -77,7 +62,7 @@ const SideBar = ({ showFilters }: Props) => {
               <FilterCard
                 value={enums.Priority.AGUARDANDO_AVALIACAO}
                 criterion="prioridade"
-                label="Aguardando Avaliação"
+                label="Aguardando avaliação"
               />
               <FilterCard
                 value={enums.Priority.EM_ANALISE}
@@ -89,20 +74,46 @@ const SideBar = ({ showFilters }: Props) => {
                 criterion="prioridade"
                 label="Reprovado"
               />
-              <FilterCard criterion="todos" label="Todas" />
+              <FilterCard criterion="todos" label="Todos" />
             </S.Filters>
-            <S.Filters value={selectedCategory} onChange={handleCategoryChange}>
-              <option
-                value={enums.Priority.APROVADO}
-                label="Aprovado para MVP"
+            <S.Filters onChange={handleCategoryChange}>
+              <FilterCard
+                valueCategory={enums.Category.AUMENTO}
+                criterion="todos"
+                label="Aumento de Vendas"
+                isCategory
               />
-              <option
-                value={enums.Priority.AGUARDANDO_AVALIACAO}
-                label="Aguardando Avaliação"
+              <FilterCard
+                valueCategory={enums.Category.REDUCAO}
+                criterion="todos"
+                label="Redução de Custos ou Aumento de Produtividade"
+                isCategory
               />
-              <option value={enums.Priority.EM_ANALISE} label="Em análise" />
-              <option value={enums.Priority.REPROVADO} label="Reprovado" />
-              <FilterCard criterion="todos" label="Todas" />
+              <FilterCard
+                valueCategory={enums.Category.SUSTENTABILIDADE}
+                criterion="todos"
+                label="Sustentabilidade, Diversidade e Inclusão"
+                isCategory
+              />
+              <FilterCard
+                valueCategory={enums.Category.EXPERIENCIA}
+                criterion="todos"
+                label="Experiência do Funcionário e Marca Empregador"
+                isCategory
+              />
+              <FilterCard
+                valueCategory={enums.Category.CLIENTE}
+                criterion="todos"
+                label="Experiência do Cliente (Digital ou Farmácia)"
+                isCategory
+              />
+              <FilterCard
+                valueCategory={enums.Category.VISIBILIDADE}
+                criterion="todos"
+                label="Visibilidade da Marca RD Saúde"
+                isCategory
+              />
+              <FilterCard criterion="todos" label="Todos" isCategory />
             </S.Filters>
           </>
         ) : (

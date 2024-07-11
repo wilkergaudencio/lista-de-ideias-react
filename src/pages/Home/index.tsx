@@ -7,9 +7,9 @@ import TasksList from '../../containers/TasksList'
 const Home = () => {
   const { isAuthenticated } = useAuth()
 
-  // if (!isAuthenticated) {
-  //   return <div>Loading...</div>
-  // }
+  if (!isAuthenticated) {
+    return <div>Loading...</div>
+  }
 
   return (
     <>

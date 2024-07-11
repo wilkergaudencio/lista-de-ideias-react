@@ -4,7 +4,7 @@ import * as enums from '../../utils/enums/Task'
 type FilterState = {
   term?: string
   criterion: 'prioridade' | 'status' | 'todos'
-  value?: enums.Priority | enums.Stats
+  value?: enums.Priority | enums.Stats | enums.Category
 }
 
 const initialState: FilterState = {
