@@ -5,6 +5,7 @@ class Task {
   priority: enums.Priority
   stats: enums.Stats
   description: string
+  status?: enums.Priority | string
   id: number
 
   constructor(

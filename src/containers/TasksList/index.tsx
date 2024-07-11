@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Task from '../../components/Task'
 import { MainContainer, Title } from '../../styles'
 import { RootReducer } from '../../store'
+import { setFilteredItems } from '../../store/reducers/tasks' // Importe a ação
 
 const TasksList = () => {
   const { term, criterion, value } = useSelector(
     (state: RootReducer) => state.filter
   )
-  // const filteredList = useSelector((state: any) => state.task.filteredItems)
+  const { criterionCategory, valueCategory } = useSelector(
+    (state: RootReducer) => state.filterCategory
+  )
+  const dispatch = useDispatch()
 
   const [ideas, setIdeas] = useState<any[]>([])
 
@@ -24,6 +28,7 @@ const TasksList = () => {
           }
         })
         setIdeas(response.data)
+        dispatch(setFilteredItems(response.data))
       } catch (err) {
         console.error(err)
       }
@@ -32,24 +37,44 @@ const TasksList = () => {
     fetchIdeas()
   }, [])
 
-  const filterTasks = () => {
+  const applyFilter = () => {
     let tasksFilter = ideas
+
     if (term !== undefined) {
       tasksFilter = tasksFilter.filter(
         (item) => item.title.toLowerCase().search(term.toLowerCase()) >= 0
       )
+    }
 
-      if (criterion === 'prioridade') {
-        tasksFilter = tasksFilter.filter((item) => item.priority === value)
-      } else if (criterion === 'status') {
+    if (
+      value?.toLowerCase() === 'todos' &&
+      valueCategory?.toLowerCase() === 'todos'
+    ) {
+      tasksFilter = ideas
+    } else {
+      if (criterion === 'prioridade' && value?.toLowerCase() !== 'todos') {
         tasksFilter = tasksFilter.filter((item) => item.status === value)
       }
-
-      return tasksFilter
-    } else {
-      return ideas
+      if (
+        criterionCategory === 'categoria' &&
+        valueCategory?.toLowerCase() !== 'todos'
+      ) {
+        tasksFilter = tasksFilter.filter(
+          (item) => item.classification?.[0] === valueCategory
+        )
+      }
     }
+
+    dispatch(setFilteredItems(tasksFilter))
   }
+
+  useEffect(() => {
+    applyFilter()
+  }, [term, criterion, value, ideas, criterionCategory, valueCategory])
+
+  const filteredTasks = useSelector(
+    (state: RootReducer) => state.tasks.filteredItems
+  )
 
   const showFilteredResult = (amount: number) => {
     let message = ''
@@ -65,21 +90,20 @@ const TasksList = () => {
     return message
   }
 
-  const tasks = filterTasks()
-  const messages = showFilteredResult(tasks.length)
+  const messages = showFilteredResult(filteredTasks.length)
 
   return (
     <MainContainer>
       <Title as="p">{messages}</Title>
       <ul>
-        {tasks.map((t, index) => (
+        {filteredTasks.map((t: any, index: number) => (
           <li key={index}>
             <Task
               id={t.id}
               title={t.title}
               description={t.description}
               priority={t.priority}
-              stats={t.status}
+              stats={t.stats}
             />
             <p>
               <strong>Nome:</strong> {t.name}
@@ -88,7 +112,8 @@ const TasksList = () => {
               <strong>Matrícula:</strong> {t.registration}
             </p>
             <p>
-              <strong>Classificação:</strong> {t.classification.join(', ')}
+              <strong>Classificação:</strong>{' '}
+              {t.classification ? t.classification.join(', ') : 'N/A'}
             </p>
             <p>
               <strong>Status:</strong> {t.status}
