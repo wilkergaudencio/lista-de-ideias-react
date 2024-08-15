@@ -3,15 +3,19 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+require('dotenv').config(); // Para carregar variáveis de ambiente
 
 const app = express();
 const PORT = process.env.PORT || 5001;
-const SECRET = 'mysecret'; // Você deve usar um segredo mais forte e armazená-lo de forma segura.
+const SECRET = process.env.JWT_SECRET || 'defaultsecret'; // Segredo JWT obtido de variável de ambiente
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ideasDB'; // String de conexão obtida de variável de ambiente
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/ideasDB');
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('Could not connect to MongoDB', err));
 
 const userSchema = new mongoose.Schema({
   username: String,
